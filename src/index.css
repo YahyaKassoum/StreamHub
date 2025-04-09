@@ -9,3 +9,48 @@
 body {
   @apply bg-gray-900 text-white;
 }
+/* Hide the scrollbar */
+
+
+/* Customize the scrollbar thumb */
+.scrollbar-hide::-webkit-scrollbar-thumb {
+  width: 12px;  /* Customize the width */
+  height: 12px; /* Customize the height */
+  background-color: #888; /* Customize the color */
+  border-radius: 6px; /* Customize the border radius */
+  padding: 2px;
+  scrollbar-width: thin;
+  width: 5px;
+  height: 5px;
+  padding: 5px;
+}
+
+/* Customize the scrollbar track (optional) */
+.scrollbar-hide::-webkit-scrollbar {
+  width: 16px; /* Adjust the scrollbar width */
+  height: 16px; /* Adjust the scrollbar height for horizontal scroll */
+  width: 5px;
+  height: 5px;
+  padding: 5px;
+}
+
+.scrollbar-hide::-webkit-scrollbar-track {
+  background: #f1f1f1; /* Customize the track background */
+  border-radius: 10px; /* Optional rounded corners */
+  width: 5px;
+  height: 5px;
+  padding: 5px;
+}
+.scrollbar-hide::-webkit-meter-bar{
+  width: 5px;
+  height: 5px;
+  padding: 5px;
+}
+.ad-container {
+  min-height: 280px;
+  width: 100%;
+  background: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

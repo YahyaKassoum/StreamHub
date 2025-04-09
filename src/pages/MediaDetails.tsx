@@ -5,6 +5,7 @@ import { fetchDetails, fetchSeasonDetails } from '../services/api';
 import MediaGrid from '../components/MediaGrid';
 import ServerSelector from '../components/ServerSelector';
 import { useTranslation } from 'react-i18next';
+import { SEOHead } from '../components/SEOHead';
 
 
 interface MediaDetailsProps {
@@ -90,10 +91,17 @@ console.log(mediaType)
         </div>
       </div>
     );
+    
   }
 
   return (
     <div className="min-h-screen bg-gray-900">
+      <SEOHead
+        title={`${details.title || details.name} - StreamHub`}
+        description={details.overview || 'Watch movies and TV shows on StreamHub'}
+        image={`https://image.tmdb.org/t/p/original${details.backdrop_path}`}
+        url={`https://${import.meta.env.VITE_DOMAINURL}/${mediaType}/${details.id}`}
+      />
       <div
         className="relative h-[60vh] bg-cover bg-center"
         style={{

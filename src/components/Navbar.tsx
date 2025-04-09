@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Film, Home, Menu,  Tv, Zap, X } from 'lucide-react';
+import { Film, Home, Menu,  Tv, Zap, X, icons } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import SearchBar from './SearchBar';
@@ -51,8 +51,8 @@ export default function Navbar() {
  
   const navItems = [
     { path: '/', icon: Home, label: t('nav.home') },
-    { path: '/movies', icon: Film, label: t('nav.movies'), categories: movieGenres, type: 'movie' },
-    { path: '/series', icon: Tv, label: t('nav.series'), categories: tvGenres, type: 'tv' },
+    { path: '/movies', icon: Film, label: t('nav.movies'), categories: movieGenres, type: 'movies' },
+    { path: '/series', icon: Tv, label: t('nav.series'), categories: tvGenres, type: 'series' },
     { path: '/anime', icon: Zap, label: t('nav.anime') },
   ];
 
@@ -64,14 +64,16 @@ export default function Navbar() {
             StreamHub
           </Link>
 
-          <div className="hidden md:flex items-center gap-8">
+          <div className="hidden  min-[983px]:flex items-center gap-8">
             {navItems.map(({ path, icon: Icon, label, categories, type }) => (
-              <div key={path} className="group relative">
+              <div key={path} className={`group relative`}>
                 {categories ? (
                   <CategoryDropdown
                     title={label}
                     categories={categories}
                     mediaType={type}
+                    icon={Icon}
+                    
                   />
                 ) : (
                   <Link
@@ -88,13 +90,13 @@ export default function Navbar() {
             ))}
           </div>
 
-          <div className="hidden md:flex items-center gap-4">
+          <div className="hidden  min-[983px]:flex  items-center gap-4">
             <SearchBar />
             <LanguageSelector />
           </div>
 
           <button
-            className="md:hidden rounded-lg bg-gray-800 p-2 text-gray-400 hover:bg-gray-700 hover:text-white"
+            className=" min-[983px]:hidden rounded-lg bg-gray-800 p-2 text-gray-400 hover:bg-gray-700 hover:text-white"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
           >
             {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
@@ -103,21 +105,29 @@ export default function Navbar() {
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <div className="mt-4 space-y-4 md:hidden">
-            {navItems.map(({ path, icon: Icon, label }) => (
-              <Link
-                key={path}
-                to={path}
-                className={`flex items-center gap-2 transition-colors ${
-                  isActive(path) ? 'text-red-600' : 'text-gray-300 hover:text-white'
-                }`}
-                onClick={() => setIsMenuOpen(false)}
-              >
-                <Icon className="h-5 w-5" />
-                <span>{label}</span>
-              </Link>
-            ))}
-            <div className="pt-4 space-y-4">
+          <div className="mt-4 space-y-4 min-[983px]:hidden">
+            {navItems.map(({ path, icon: Icon, label, categories, type }) => (
+              <div key={path} className="group relative">
+              {categories ? (
+                <CategoryDropdown
+                  title={label}
+                  categories={categories}
+                  mediaType={type}
+                />
+              ) : (
+                <Link
+                  to={path}
+                  className={`flex items-center gap-2 transition-colors ${
+                    isActive(path) ? 'text-red-600' : 'text-gray-300 hover:text-white'
+                  }`}
+                >
+                  <Icon className="h-5 w-5" />
+                  <span>{label}</span>
+                </Link>
+              )}
+            </div>
+          ))}
+            <div className=" gap-4 space-y-4">
               <SearchBar />
               <LanguageSelector />
             </div>

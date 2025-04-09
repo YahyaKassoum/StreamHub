@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { Play, Star } from 'lucide-react';
 
+
 interface Media {
   id: number;
   title?: string;
@@ -8,18 +9,25 @@ interface Media {
   poster_path: string;
   vote_average: number;
   media_type?: string;
+  overview?: string;
+  backdrop_path?: string;
+  release_date?: string;
+  first_air_date?: string;
+  genre_ids?: number[];
 }
 
 interface MediaGridProps {
   items: Media[];
-  mediaType: 'movie' | 'tv'| "anime";
+  mediaType: string;
 }
 
 export default function MediaGrid({ items, mediaType }: MediaGridProps) {
   return (
     <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5">
+      
       {items.map((item) => (
         <div key={item.id} className="group relative overflow-hidden rounded-lg">
+        
           <Link 
             to={`/${item.media_type || mediaType}/${item.id}/${ mediaType==="anime"?"true":""}`}
             state={{ media: item }}

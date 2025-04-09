@@ -73,6 +73,7 @@ export default function Movies() {
 
   return (
     <main className="min-h-screen bg-gray-900 pt-16">
+      
       <MediaScroller items={trending.results} mediaType="movie" />
       <div className="mx-auto max-w-7xl px-4 py-8">
         <GenreFilter
