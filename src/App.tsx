@@ -37,11 +37,11 @@ export default function App() {
             <Route path="/movies" element={<Movies />} />
             <Route path="/:mediaType/categories/:id" element={<CategoryMovies />} />
             <Route path="/series" element={<Series />} />
-            <Route path="/anime" element={<Anime />} />
+            <Route path="/animes" element={<Anime />} />
             <Route path="/search" element={<Search />} />
-            <Route path="/movie/:id" element={<MediaDetails mediaType="movie" />} />
-            <Route path="/anime/:id/:isAnime" element={<MediaDetails mediaType="tv"  />} />
-            <Route path="/tv/:id" element={<MediaDetails mediaType="tv" />} />
+            <Route path="/movies/:id" element={<MediaDetails mediaType="movie" />} />
+            <Route path="/animes/:id/:isAnime" element={<MediaDetails mediaType="tv"  />} />
+            <Route path="/series/:id" element={<MediaDetails mediaType="tv" />} />
             <Route path="/stream/movie/:id" element={<StreamContent mediaType="movie" />} />
             <Route path="/stream/movie/:id" element={<StreamContent mediaType="movie" />} />
             <Route path="/stream/tv/:id/season/:season/episode/:episode" element={<StreamContent mediaType="tv" />} />

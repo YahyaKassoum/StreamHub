@@ -11,12 +11,12 @@ interface Media {
   name?: string;
   backdrop_path: string;
   overview: string;
-  media_type?: 'movie' | 'tv';
+  media_type?: 'movies' | 'tv';
 }
 
 interface MediaScrollerProps {
   items: Media[];
-  mediaType: 'movie' | 'tv';
+  mediaType: 'movies' | 'tv'| 'series';
 }
 
 export default function MediaScroller({ items, mediaType }: MediaScrollerProps) {
@@ -45,7 +45,7 @@ export default function MediaScroller({ items, mediaType }: MediaScrollerProps) 
                   </h2>
                   <p className="mt-2 max-w-2xl text-gray-300">{item.overview}</p>
                   <Link
-                    to={`/${type}/${item.id}`}
+                    to={`/${type =="tv"?`series/${item.id}` : `movies/${item.id}` }`}
                     className="mt-4 inline-flex items-center gap-2 rounded-lg bg-red-600 px-6 py-3 font-semibold text-white transition-colors hover:bg-red-700"
                   >
                     <Play className="h-5 w-5" />

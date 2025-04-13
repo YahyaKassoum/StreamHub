@@ -29,7 +29,7 @@ export default function MediaGrid({ items, mediaType }: MediaGridProps) {
         <div key={item.id} className="group relative overflow-hidden rounded-lg">
         
           <Link 
-            to={`/${item.media_type || mediaType}/${item.id}/${ mediaType==="anime"?"true":""}`}
+            to={`/${item.media_type =="tv"?`series/${item.id}` : item.media_type=="movies"?`movies/${item.id}`:`animes/${item.id}/true` }`}
             state={{ media: item }}
           >
             <img

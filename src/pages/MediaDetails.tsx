@@ -9,8 +9,9 @@ import { SEOHead } from '../components/SEOHead';
 
 
 interface MediaDetailsProps {
-  mediaType: 'movie' | 'tv'|"anime";
+  mediaType: 'movie' | 'tv' ; 
 }
+
 
 export default function MediaDetails({ mediaType }: MediaDetailsProps) {
   const { id } = useParams();

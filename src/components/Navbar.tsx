@@ -53,7 +53,7 @@ export default function Navbar() {
     { path: '/', icon: Home, label: t('nav.home') },
     { path: '/movies', icon: Film, label: t('nav.movies'), categories: movieGenres, type: 'movies' },
     { path: '/series', icon: Tv, label: t('nav.series'), categories: tvGenres, type: 'series' },
-    { path: '/anime', icon: Zap, label: t('nav.anime') },
+    { path: '/animes', icon: Zap, label: t('nav.anime') },
   ];
 
   return (

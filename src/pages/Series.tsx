@@ -67,14 +67,14 @@ export default function Series() {
 
   return (
     <main className="min-h-screen bg-gray-900 pt-16">
-      <MediaScroller items={trending.results} mediaType="tv" />
+      <MediaScroller items={trending.results} mediaType="series" />
       <div className="mx-auto max-w-7xl px-4 py-8">
         <GenreFilter
           genres={genres}
           selectedGenre={selectedGenre}
           onGenreSelect={setSelectedGenre}
         />
-        <MediaGrid items={series.results} mediaType="tv" />
+        <MediaGrid items={series.results} mediaType="series" />
         <div className="mt-8">
           <Pagination
             currentPage={currentPage}
