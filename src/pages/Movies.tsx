@@ -6,6 +6,7 @@ import Pagination from '../components/Pagination';
 import { fetchTrending, fetchByGenre, fetchGenres } from '../services/api';
 import { useParams } from 'react-router-dom';
 import ScrollToTop from '../components/ScrollToTop';
+import { SEOHead } from '../components/SEOHead';
 
 export default function Movies() {
   const [trending, setTrending] = useState({ results: [] });
@@ -73,6 +74,12 @@ export default function Movies() {
 
   return (
     <main className="min-h-screen bg-gray-900 pt-16">
+        <SEOHead
+         title="StreamHub-Movies - letest Movies "
+         description="watch the letest and the propos Movies with all categories  for free on StreamHub"
+         image="/movie.png"
+         url={import.meta.env.VITE_DOMAINURL+"/movies"}
+        />
       
       <MediaScroller items={trending.results} mediaType="movie" />
       <div className="mx-auto max-w-7xl px-4 py-8">

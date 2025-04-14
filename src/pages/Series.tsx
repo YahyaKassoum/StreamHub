@@ -4,6 +4,7 @@ import MediaGrid from '../components/MediaGrid';
 import GenreFilter from '../components/GenreFilter';
 import Pagination from '../components/Pagination';
 import { fetchTrending, fetchByGenre, fetchGenres } from '../services/api';
+import { SEOHead } from '../components/SEOHead';
 
 export default function Series() {
   const [trending, setTrending] = useState({ results: [] });
@@ -67,6 +68,12 @@ export default function Series() {
 
   return (
     <main className="min-h-screen bg-gray-900 pt-16">
+         <SEOHead
+              title="StreamHub-Series - letest series and tv shows"
+              description="watch the letest and the propos series and  TV shows for free on StreamHub"
+              image="/movie.png"
+              url={import.meta.env.VITE_DOMAINURL+"/series"}
+            />
       <MediaScroller items={trending.results} mediaType="series" />
       <div className="mx-auto max-w-7xl px-4 py-8">
         <GenreFilter

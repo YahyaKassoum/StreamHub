@@ -8,7 +8,7 @@ export interface Movie {
   release_date: string;
   genre_ids: number[];
 }
-
+m
 export interface MovieDetails extends Movie {
   runtime: number;
   genres: { id: number; name: string }[];

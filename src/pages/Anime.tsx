@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import MediaGrid from '../components/MediaGrid';
 import { fetchAnime } from '../services/api';
 import Pagination from '../components/Pagination';
+import { SEOHead } from '../components/SEOHead';
 
 export default function Anime() {
   const [anime, setAnime] = useState({ results: [] });
@@ -37,6 +38,12 @@ export default function Anime() {
 
   return (
     <main className="min-h-screen bg-gray-900 pt-20">
+      <SEOHead
+               title="StreamHub-Animes - letest Animes "
+               description="watch the letest and the propos Animes with all categories  for free on StreamHub"
+               image="/movie.png"
+               url={import.meta.env.VITE_DOMAINURL+"/animes"}
+              />
       <div className="mx-auto max-w-7xl px-4 py-8">
         <h1 className="mb-8 text-3xl font-bold text-white">Anime Series</h1>
         <MediaGrid items={anime.results} mediaType="animes"  />

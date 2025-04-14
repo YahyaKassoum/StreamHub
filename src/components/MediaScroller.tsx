@@ -11,7 +11,7 @@ interface Media {
   name?: string;
   backdrop_path: string;
   overview: string;
-  media_type?: 'movies' | 'tv';
+  media_type?: 'movies' | 'series' | 'tv';
 }
 
 interface MediaScrollerProps {
@@ -28,7 +28,7 @@ export default function MediaScroller({ items, mediaType }: MediaScrollerProps) 
       className="h-[80vh] w-full pt-"
     >
       {items.map((item) => {
-        const type = item.media_type || mediaType;
+        const type = mediaType;
         return (
           <SwiperSlide key={item.id}>
             <div className="relative h-full w-full">

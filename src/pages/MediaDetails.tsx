@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams, useLocation, useRoutes, Router, useNavigate } from 'react-router-dom';
 import { Clock, Star } from 'lucide-react';
-import { fetchDetails, fetchSeasonDetails } from '../services/api';
+import { fetchDetails, fetchSeasonDetails, fetchSimilarContent } from '../services/api';
 import MediaGrid from '../components/MediaGrid';
 import ServerSelector from '../components/ServerSelector';
 import { useTranslation } from 'react-i18next';
@@ -62,9 +62,33 @@ console.log(mediaType)
         setDetails(data);
         
         if (mediaType === 'tv') {
-          const seasonData = await fetchSeasonDetails(id, selectedSeason,"en");
+          const seasonData = await fetchSeasonDetails(id, selectedSeason, "en");
           setSeasonDetails(seasonData);
         }
+
+        // Get the release year
+        const year = new Date(data.release_date || data.first_air_date).getFullYear();
+        
+        // Get similar content with better filters
+        if (data.genres) {
+          const genreIds = data.genres.map(g => g.id);
+          const similarContent = await fetchSimilarContent(
+            mediaType,
+            id,
+            genreIds,
+            year,
+            i18n.language
+          );
+
+          // Filter out the current movie/show from results
+          data.similar = {
+            results: similarContent.results
+              .filter(item => item.id !== parseInt(id))
+              .slice(0, 12)
+          };
+        }
+
+        setDetails(data);
       } catch (error) {
         console.error('Error loading details:', error);
         setError('Failed to load media details');

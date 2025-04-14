@@ -22,14 +22,16 @@ interface MediaGridProps {
 }
 
 export default function MediaGrid({ items, mediaType }: MediaGridProps) {
+
   return (
     <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5">
       
       {items.map((item) => (
+        
         <div key={item.id} className="group relative overflow-hidden rounded-lg">
         
           <Link 
-            to={`/${item.media_type =="tv"?`series/${item.id}` : item.media_type=="movies"?`movies/${item.id}`:`animes/${item.id}/true` }`}
+            to={`/${ ((item.media_type || mediaType ) =="series"|| (item.media_type || mediaType ) =="tv") ?`series/${item.id}` : (item.media_type || mediaType)=="movie"?`movies/${item.id}`: `animes/${item.id}/true` }`}
             state={{ media: item }}
           >
             <img
