@@ -1,0 +1,7 @@
+User-agent: *
+Disallow: /admin/
+Allow: /
+Allow: /sitemap.xml
+Allow: /sitemap.txt
+
+Sitemap: https://stream-hub-movies.vercel.app/sitemap.xml
